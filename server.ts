@@ -12,5 +12,5 @@ class Server {
 const server = new Server().app
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
-  console.log(`Server Running At  ${port}`);
+  console.log(`Server Running At ${port}`);
 });

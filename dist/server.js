@@ -15,5 +15,5 @@ var Server = /** @class */ (function () {
 var server = new Server().app;
 var port = process.env.PORT || 3000;
 server.listen(port, function () {
-    console.log("Server Running At  " + port);
+    console.log("Server Running At " + port);
 });

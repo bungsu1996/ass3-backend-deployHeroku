@@ -46,18 +46,12 @@ var connectDB = /** @class */ (function () {
     var _a;
     _a = connectDB;
     connectDB.connect = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var dbPathUrl, connectOptions, error_1;
+        var dbPathUrl, error_1;
         return __generator(_a, function (_b) {
             switch (_b.label) {
                 case 0:
                     _b.trys.push([0, 2, , 3]);
                     dbPathUrl = "mongodb+srv://hamzah1996:hamzah1996@assigment3.e6dhy.mongodb.net/E-Commerce?retryWrites=true&w=majority";
-                    connectOptions = {
-                        useCreateIndex: true,
-                        useNewUrlParser: true,
-                        useUnifiedTopology: true,
-                        useFindAndModify: false,
-                    };
                     return [4 /*yield*/, mongoose_1.default.connect("" + dbPathUrl)];
                 case 1:
                     _b.sent();
@@ -65,7 +59,8 @@ var connectDB = /** @class */ (function () {
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _b.sent();
-                    console.log(error_1);
+                    console.log("Mongoose Connection Failed");
+                    console.error.bind(console, "Mongoose Error");
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
