@@ -24,6 +24,8 @@ var userRoutes = /** @class */ (function () {
         };
         this.userSeeItem = function () {
             _this.userRoute.get("/listItem", user_controllers_1.default.listItem);
+            _this.userRoute.get("/listItem/productpilihan", user_controllers_1.default.listItem6);
+            _this.userRoute.get("/listItem/productpilihan2", user_controllers_1.default.listItemDiskon);
             _this.userRoute.get("/detailItem/:Id_Item", user_controllers_1.default.detailItem);
         };
         this.userRoute = (0, express_1.Router)();

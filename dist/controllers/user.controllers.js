@@ -155,9 +155,54 @@ var userControllers = /** @class */ (function () {
             });
         });
     };
+    userControllers.listItem6 = function (req, res, next) {
+        return __awaiter(this, void 0, void 0, function () {
+            var result, error_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, item_models_1.default
+                                .find()
+                                .limit(6)];
+                    case 1:
+                        result = _a.sent();
+                        res.status(200).json(result);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_4 = _a.sent();
+                        next(error_4);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    userControllers.listItemDiskon = function (req, res, next) {
+        return __awaiter(this, void 0, void 0, function () {
+            var result, error_5;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, item_models_1.default
+                                .find({ Stock_Item: { $lte: 8 } })];
+                    case 1:
+                        result = _a.sent();
+                        res.status(200).json(result);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_5 = _a.sent();
+                        next(error_5);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     userControllers.detailItem = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var Id_Item, result, error_4;
+            var Id_Item, result, error_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -171,8 +216,8 @@ var userControllers = /** @class */ (function () {
                         res.status(200).json({ Detail_Item: result });
                         return [3 /*break*/, 4];
                     case 3:
-                        error_4 = _a.sent();
-                        next(error_4);
+                        error_6 = _a.sent();
+                        next(error_6);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
                 }
@@ -181,7 +226,7 @@ var userControllers = /** @class */ (function () {
     };
     userControllers.listKeranjangUser = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var Id_Keranjang, result, error_5;
+            var Id_Keranjang, result, error_7;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -198,8 +243,8 @@ var userControllers = /** @class */ (function () {
                         res.status(200).json({ List_Keranjang: result });
                         return [3 /*break*/, 4];
                     case 3:
-                        error_5 = _a.sent();
-                        next(error_5);
+                        error_7 = _a.sent();
+                        next(error_7);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
                 }
@@ -208,7 +253,7 @@ var userControllers = /** @class */ (function () {
     };
     userControllers.hapusItem = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var Id_Keranjang, Id_Item, error_6;
+            var Id_Keranjang, Id_Item, error_8;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -228,8 +273,8 @@ var userControllers = /** @class */ (function () {
                         res.status(200).json({ Message: "Item Dikeranjang Berhasil Dihapus!" });
                         return [3 /*break*/, 5];
                     case 4:
-                        error_6 = _a.sent();
-                        next(error_6);
+                        error_8 = _a.sent();
+                        next(error_8);
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -238,7 +283,7 @@ var userControllers = /** @class */ (function () {
     };
     userControllers.order = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var Id_Keranjang, Id_Item, foundKeranjang, foundItem, error_7;
+            var Id_Keranjang, Id_Item, foundKeranjang, foundItem, error_9;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -264,8 +309,8 @@ var userControllers = /** @class */ (function () {
                         });
                         return [3 /*break*/, 6];
                     case 5:
-                        error_7 = _a.sent();
-                        next(error_7);
+                        error_9 = _a.sent();
+                        next(error_9);
                         return [3 /*break*/, 6];
                     case 6: return [2 /*return*/];
                 }

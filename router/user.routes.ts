@@ -32,6 +32,8 @@ class userRoutes {
   };
   public userSeeItem = () => {
     this.userRoute.get("/listItem", userController.listItem);
+    this.userRoute.get("/listItem/productpilihan", userController.listItem6);
+    this.userRoute.get("/listItem/productpilihan2", userController.listItemDiskon);
     this.userRoute.get("/detailItem/:Id_Item", userController.detailItem);
   };
 }

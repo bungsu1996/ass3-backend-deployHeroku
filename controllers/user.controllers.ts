@@ -77,6 +77,27 @@ class userControllers {
     }
   }
 
+  static async listItem6(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await itemSchema
+        .find()
+        .limit(6)
+      res.status(200).json( result );
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async listItemDiskon(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await itemSchema
+        .find({ Stock_Item: { $lte: 8}})
+      res.status(200).json( result );
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async detailItem(req: Request, res: Response, next: NextFunction) {
     const { Id_Item } = req.params;
 
