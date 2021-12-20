@@ -1,7 +1,5 @@
 import app from "./app";
 import { Application } from "express";
-import dotenv from "dotenv"
-dotenv.config()
 class Server {
   public app: Application;
   constructor() {
