@@ -16,6 +16,12 @@ var App = /** @class */ (function () {
         this.plugin = function () {
             connectDB_1.default.connect();
             _this.app.use((0, cors_1.default)());
+            _this.app.use(function (req, res, next) {
+                res.setHeader("Access-Control-Allow-Origin", "*");
+                res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+                res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+                next();
+            });
             _this.app.use(express_1.default.json());
             _this.app.use(express_1.default.urlencoded({ extended: true }));
             _this.app.use((0, morgan_1.default)('tiny'));
