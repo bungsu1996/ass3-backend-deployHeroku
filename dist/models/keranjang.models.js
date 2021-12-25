@@ -4,7 +4,9 @@ var mongoose_1 = require("mongoose");
 var keranjangSchema = new mongoose_1.Schema({
     Id_User: { type: mongoose_1.Schema.Types.ObjectId, ref: "User_Pembeli" },
     Item: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Item" }],
-    jumlahItem: { type: Number }
+    itemName: { type: String, default: '' },
+    price: { type: Number, default: 0 },
+    quantity: { type: Number, default: 0 }
 }, {
     versionKey: false,
 });

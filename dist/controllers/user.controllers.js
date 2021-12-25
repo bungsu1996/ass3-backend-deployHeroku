@@ -49,11 +49,11 @@ var userControllers = /** @class */ (function () {
     }
     userControllers.userRegister = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, Username, Email, Password, Keranjang, hashPass, hashedPass, newCart, result, foundId, error_1;
+            var _a, Username, Email, Password, hashPass, hashedPass, newCart, result, foundId, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = req.body, Username = _a.Username, Email = _a.Email, Password = _a.Password, Keranjang = _a.Keranjang;
+                        _a = req.body, Username = _a.Username, Email = _a.Email, Password = _a.Password;
                         hashPass = bcryptjs_1.default.genSaltSync(10);
                         hashedPass = bcryptjs_1.default.hashSync(Password, hashPass);
                         _b.label = 1;
