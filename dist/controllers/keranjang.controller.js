@@ -42,12 +42,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var keranjang_models_1 = __importDefault(require("../models/keranjang.models"));
 var user_models_1 = __importDefault(require("../models/user.models"));
 var item_models_1 = __importDefault(require("../models/item.models"));
+var keranjang_models_2 = __importDefault(require("../models/keranjang.models"));
 var keranjangUser = /** @class */ (function () {
     function keranjangUser() {
     }
     keranjangUser.addItemToCart = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, IdKeranjang, IdItem, jumlahItem, foundItem, result, error_1;
+            var id, _a, IdKeranjang, IdItem, jumlahItem, test, cek, foundItem, result, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -55,40 +56,37 @@ var keranjangUser = /** @class */ (function () {
                         _a = req.body, IdKeranjang = _a.IdKeranjang, IdItem = _a.IdItem, jumlahItem = _a.jumlahItem;
                         _b.label = 1;
                     case 1:
-                        _b.trys.push([1, 5, , 6]);
+                        _b.trys.push([1, 6, , 7]);
                         if (jumlahItem === null || jumlahItem <= 0) {
                             throw { name: "DONT_NULL" };
                         }
                         return [4 /*yield*/, user_models_1.default.findById(id)];
                     case 2:
-                        _b.sent();
-                        return [4 /*yield*/, item_models_1.default.findById(IdItem)];
+                        test = _b.sent();
+                        return [4 /*yield*/, user_models_1.default.findOne({ Keranjang: keranjang_models_2.default })];
                     case 3:
+                        cek = _b.sent();
+                        console.log(cek);
+                        return [4 /*yield*/, item_models_1.default.findById(IdItem)];
+                    case 4:
                         foundItem = _b.sent();
-                        // console.log(foundItem);
                         if (foundItem.Stock_Item === 0 || foundItem.Stock_Item < jumlahItem) {
                             throw { name: "STOCK_0" };
                         }
                         return [4 /*yield*/, keranjang_models_1.default.findByIdAndUpdate(IdKeranjang, {
                                 $push: { Item: foundItem, jumlahItem: jumlahItem },
                             }, { new: true })];
-                    case 4:
+                    case 5:
                         result = _b.sent();
-                        // await itemSchema.findByIdAndUpdate(
-                        //   IdItem,
-                        //   { $inc: { Stock_Item: -jumlahItem } },
-                        //   { new: true }
-                        // // );
                         res.status(200).json({
                             Message: "Berhasil Memasukkan Item Kedalam Keranjang",
-                            Dear_User: "Silahkan Cek Keranjang Anda Untuk Mulai Mengorder",
                         });
-                        return [3 /*break*/, 6];
-                    case 5:
+                        return [3 /*break*/, 7];
+                    case 6:
                         error_1 = _b.sent();
                         next(error_1);
-                        return [3 /*break*/, 6];
-                    case 6: return [2 /*return*/];
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
                 }
             });
         });

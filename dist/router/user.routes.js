@@ -15,7 +15,7 @@ var userRoutes = /** @class */ (function () {
             _this.userRoute.post("/login", user_controllers_1.default.userLogin);
         };
         this.userKeranjang = function () {
-            _this.userRoute.get("/keranjang/:Id_Keranjang", user_controllers_1.default.listKeranjangUser);
+            _this.userRoute.get("/keranjang", user_controllers_1.default.listKeranjangUser);
             _this.userRoute.patch("/keranjang/hapus/:Id_Keranjang", user_controllers_1.default.hapusItem);
             _this.userRoute.patch("/order/:Id_Keranjang", user_controllers_1.default.order);
         };

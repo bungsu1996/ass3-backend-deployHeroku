@@ -120,7 +120,8 @@ var userControllers = /** @class */ (function () {
                             Email: result.Email,
                         }, "secretpass", { expiresIn: "2h" });
                         res.status(200).json({
-                            token: token, userId: result.id
+                            token: token,
+                            userId: result.id,
                         });
                         return [3 /*break*/, 4];
                     case 3:
@@ -162,9 +163,7 @@ var userControllers = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, item_models_1.default
-                                .find()
-                                .limit(6)];
+                        return [4 /*yield*/, item_models_1.default.find().limit(6)];
                     case 1:
                         result = _a.sent();
                         res.status(200).json(result);
@@ -185,8 +184,7 @@ var userControllers = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, item_models_1.default
-                                .find({ Stock_Item: { $lte: 8 } })];
+                        return [4 /*yield*/, item_models_1.default.find({ Stock_Item: { $lte: 8 } })];
                     case 1:
                         result = _a.sent();
                         res.status(200).json(result);
@@ -226,21 +224,24 @@ var userControllers = /** @class */ (function () {
     };
     userControllers.listKeranjangUser = function (req, res, next) {
         return __awaiter(this, void 0, void 0, function () {
-            var Id_Keranjang, result, error_7;
+            var id, foundUser, error_7;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        Id_Keranjang = req.params.Id_Keranjang;
+                        id = req.userData.id;
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, keranjang_models_1.default
-                                .findById(Id_Keranjang)
-                                .select("Item")
-                                .populate({ path: "Item", select: "Nama_Item Harga_Item" })];
+                        return [4 /*yield*/, user_models_1.default
+                                .findById(id)
+                                .select("Keranjang")
+                                .populate({
+                                path: "Keranjang",
+                                select: "Item",
+                            })];
                     case 2:
-                        result = _a.sent();
-                        res.status(200).json({ List_Keranjang: result });
+                        foundUser = _a.sent();
+                        res.status(200).json(foundUser);
                         return [3 /*break*/, 4];
                     case 3:
                         error_7 = _a.sent();

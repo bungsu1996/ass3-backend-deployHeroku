@@ -18,7 +18,7 @@ class userRoutes {
   };
   public userKeranjang = () => {
     this.userRoute.get(
-      "/keranjang/:Id_Keranjang",
+      "/keranjang",
       userController.listKeranjangUser
     );
     this.userRoute.patch(

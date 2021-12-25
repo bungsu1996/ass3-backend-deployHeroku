@@ -59,7 +59,8 @@ class userControllers {
         { expiresIn: "2h" }
       );
       res.status(200).json({
-        token: token, userId: result.id
+        token: token,
+        userId: result.id,
       });
     } catch (error) {
       next(error);
@@ -71,7 +72,7 @@ class userControllers {
       const result = await itemSchema
         .find()
         .select("Foto_Item Nama_Item Harga_Item Stock_Item");
-      res.status(200).json( result );
+      res.status(200).json(result);
     } catch (error) {
       next(error);
     }
@@ -79,10 +80,8 @@ class userControllers {
 
   static async listItem6(req: Request, res: Response, next: NextFunction) {
     try {
-      const result = await itemSchema
-        .find()
-        .limit(6)
-      res.status(200).json( result );
+      const result = await itemSchema.find().limit(6);
+      res.status(200).json(result);
     } catch (error) {
       next(error);
     }
@@ -90,9 +89,8 @@ class userControllers {
 
   static async listItemDiskon(req: Request, res: Response, next: NextFunction) {
     try {
-      const result = await itemSchema
-        .find({ Stock_Item: { $lte: 8}})
-      res.status(200).json( result );
+      const result = await itemSchema.find({ Stock_Item: { $lte: 8 } });
+      res.status(200).json(result);
     } catch (error) {
       next(error);
     }
@@ -114,13 +112,16 @@ class userControllers {
     res: Response,
     next: NextFunction
   ) {
-    const { Id_Keranjang } = req.params;
+    const { id }: any = req.userData;
     try {
-      const result = await keranjangSchema
-        .findById(Id_Keranjang)
-        .select("Item")
-        .populate({ path: "Item", select: "Nama_Item Harga_Item" });
-      res.status(200).json({ List_Keranjang: result });
+      const foundUser = await userSchema
+        .findById(id)
+        .select("Keranjang")
+        .populate({
+          path: "Keranjang",
+          select: "Item",
+        });
+      res.status(200).json(foundUser);
     } catch (error) {
       next(error);
     }
