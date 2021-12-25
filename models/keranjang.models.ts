@@ -5,7 +5,9 @@ const keranjangSchema = new Schema(
   {
     Id_User: { type: Schema.Types.ObjectId, ref: "User_Pembeli" },
     Item: [{ type: Schema.Types.ObjectId, ref: "Item" }],
-    jumlahItem: { type: Number }
+    itemName: { type: String, default: '' },
+    price: { type: Number, default: 0 },
+    quantity: { type: Number, default: 0 }
   },
   {
     versionKey: false,

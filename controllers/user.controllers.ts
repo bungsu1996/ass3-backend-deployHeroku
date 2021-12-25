@@ -9,7 +9,7 @@ import itemSchema from "../models/item.models";
 
 class userControllers {
   static async userRegister(req: Request, res: Response, next: NextFunction) {
-    const { Username, Email, Password, Keranjang } = req.body;
+    const { Username, Email, Password } = req.body;
 
     const hashPass = bcrypt.genSaltSync(10);
     const hashedPass = bcrypt.hashSync(Password, hashPass);

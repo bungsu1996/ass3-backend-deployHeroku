@@ -1,6 +1,9 @@
 interface I_keranjang {
-  Email: any;
+  Id_User: any;
   Item: any;
+  itemName: string;
+  price: number;
+  quantity: number;
 }
 
 export default I_keranjang;
